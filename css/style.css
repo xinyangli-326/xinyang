@@ -732,6 +732,9 @@ main { position: relative; z-index: 1; }
   gap: 8px;
 }
 
+.project-actions { margin-top: 18px; }
+.project-actions .btn { padding: 11px 20px; font-size: 0.95rem; }
+
 .result-pill {
   background: var(--card);
   border: 1.5px solid transparent;
