@@ -152,6 +152,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: #fff;
   box-shadow: 0 6px 14px rgba(238, 118, 172, 0.35);
   margin-left: 8px;
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 800;
 }
 
 .nav-links .nav-cta:hover { color: #fff; transform: translateY(-2px) rotate(-1deg); }
@@ -882,6 +885,90 @@ main { position: relative; z-index: 1; }
   font-size: 0.9rem;
   font-weight: 700;
 }
+
+/* ============ 联系面板（来聊聊） ============ */
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 220;
+  display: grid;
+  place-items: center;
+  background: rgba(34, 22, 40, 0.78);
+  padding: 4vh 4vw;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.contact-modal.open { opacity: 1; visibility: visible; }
+
+.contact-modal-card {
+  position: relative;
+  width: min(430px, 94vw);
+  background: linear-gradient(150deg, var(--card), var(--purple-soft) 55%, var(--pink-soft));
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: 26px;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.35);
+  padding: 38px 30px 30px;
+  text-align: center;
+  transform: translateY(14px) scale(0.97);
+  transition: transform 0.3s ease;
+}
+
+.contact-modal.open .contact-modal-card { transform: translateY(0) scale(1); }
+
+.contact-modal-card .contact-kicker { margin-bottom: 6px; }
+.contact-modal-card h3 { font-size: 1.25rem; margin-bottom: 22px; color: var(--ink); }
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  border-radius: 16px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+
+.contact-item-label { font-size: 0.92rem; font-weight: 800; color: var(--ink-soft); flex: none; }
+.contact-item-value { font-weight: 900; color: var(--pink-deep); word-break: break-all; flex: 1; }
+.contact-item-value:hover { text-decoration: underline; }
+
+.contact-copy {
+  flex: none;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--purple-deep);
+  background: var(--purple-soft);
+  border: 1px dashed var(--purple);
+  border-radius: 999px;
+  padding: 6px 12px;
+  transition: all 0.25s ease;
+}
+
+.contact-copy:hover { background: var(--purple); color: #fff; transform: translateY(-1px); }
+
+.contact-modal-actions { margin-top: 16px; }
+
+.contact-copied {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 7px 16px;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+
+.contact-copied.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 .result-pill {
   background: var(--card);
