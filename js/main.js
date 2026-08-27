@@ -86,4 +86,50 @@
       polaroid.style.transform = "";
     });
   }
+
+  /* ---------- 海报案例 Lightbox（点击图片放大） ---------- */
+  const posterGrid = document.querySelector(".poster-grid");
+  const lightbox = document.getElementById("lightbox");
+
+  if (posterGrid && lightbox) {
+    const imgs = Array.from(posterGrid.querySelectorAll("img[data-full]"));
+    const lbImg = lightbox.querySelector("img");
+    const lbCount = lightbox.querySelector(".lb-count");
+    let current = 0;
+
+    const open = (i) => {
+      if (!imgs.length) return;
+      current = (i + imgs.length) % imgs.length;
+      lbImg.src = imgs[current].dataset.full;
+      lbImg.alt = imgs[current].alt || "海报案例";
+      if (lbCount) lbCount.textContent = (current + 1) + " / " + imgs.length;
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    };
+
+    const close = () => {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    };
+
+    posterGrid.addEventListener("click", (e) => {
+      const thumb = e.target.closest("img[data-full]");
+      if (thumb) open(imgs.indexOf(thumb));
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox || e.target.closest(".lb-close")) close();
+      else if (e.target.closest(".lb-prev")) open(current - 1);
+      else if (e.target.closest(".lb-next")) open(current + 1);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("open")) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft") open(current - 1);
+      else if (e.key === "ArrowRight") open(current + 1);
+    });
+  }
 })();

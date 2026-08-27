@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="李鑫阳的 vibe coding 作品：营销内容中台（AI 内容库）、走走薯账号运营。" />
+  <meta name="description" content="李鑫阳的 vibe coding 作品：AI 营销内容中台与 AI 知识库生成海报案例。" />
   <title>vibe coding 作品 · 李鑫阳</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -87,29 +87,29 @@
             </div>
           </article>
 
-          <!-- 作品 2：走走薯 -->
-          <article class="card project-card reveal d1">
-            <span class="tape tape-blue"></span>
-            <div class="project-cover cover-pink">
-              <span class="cover-emoji">📕</span>
-              <span class="cover-badge">内容运营</span>
-            </div>
-            <h3>「走走薯」十万粉账号运营</h3>
-            <p>
-              独立完成文案撰写、标题优化、笔记排版，产出高质量笔记；
-              跟进发布后全流程数据复盘，持续迭代运营策略。
+          <!-- 作品 2：AI 知识库生成海报案例 -->
+          <article class="card project-card poster-card reveal d1">
+            <span class="tape tape-pink"></span>
+            <h3>AI 知识库生成海报案例 <span style="font-size:0.8em">🖼️</span></h3>
+            <p class="poster-intro">
+              由 AI 营销内容中台基于业务知识库自动产出的海报与界面案例——
+              文案、排版、视觉一次生成，点击任意图片可放大查看。
             </p>
-            <div class="project-result">
-              <span class="result-pill r-pink">10w+ 粉丝</span>
-              <span class="result-pill r-purple">全流程复盘</span>
-              <span class="result-pill r-blue">高质笔记</span>
+            <div class="poster-grid">
+              <figure class="poster-thumb">
+                <img src="assets/case-1.jpg" data-full="assets/case-1.jpg" alt="AI 知识库生成海报案例 1" loading="lazy" />
+                <figcaption>海报案例 1</figcaption>
+              </figure>
+              <figure class="poster-thumb">
+                <img src="assets/case-2.jpg" data-full="assets/case-2.jpg" alt="AI 知识库生成海报案例 2" loading="lazy" />
+                <figcaption>海报案例 2</figcaption>
+              </figure>
+              <figure class="poster-thumb poster-wide">
+                <img src="assets/case-3.jpg" data-full="assets/case-3.jpg" alt="AI 知识库生成海报案例 3" loading="lazy" />
+                <figcaption>海报案例 3（长图）</figcaption>
+              </figure>
             </div>
-            <div class="work-tags">
-              <span class="chip c-pink">内容创作</span>
-              <span class="chip c-blue">标题优化</span>
-              <span class="chip c-purple">数据复盘</span>
-              <span class="chip c-beige">PS 设计</span>
-            </div>
+            <p class="poster-hint">🔍 点击图片可放大查看</p>
           </article>
 
           <!-- 待补充 -->
@@ -150,6 +150,16 @@
   </footer>
 
   <button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+
+  <!-- 图片放大查看 -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-btn lb-close" aria-label="关闭">×</button>
+    <button class="lb-btn lb-prev" aria-label="上一张">‹</button>
+    <img src="" alt="海报案例大图" />
+    <button class="lb-btn lb-next" aria-label="下一张">›</button>
+    <span class="lb-count"></span>
+  </div>
+
   <script src="js/main.js"></script>
 </body>
 </html>
