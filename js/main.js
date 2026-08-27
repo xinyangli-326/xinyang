@@ -7,24 +7,7 @@
 
   /* ---------- 多语言切换（简体中文 / English） ---------- */
   const I18N = window.I18N || {};
-  const urlLang = new URLSearchParams(location.search).get("lang");
-  const savedLang = urlLang || "zh";
-  let currentLang = savedLang === "en" ? "en" : "zh";
-
-  const syncLinks = (lang) => {
-    document.querySelectorAll("a[href]").forEach((a) => {
-      const raw = a.getAttribute("href");
-      if (!raw || /^(https?:|mailto:|tel:|data:|javascript:)/.test(raw)) return;
-      const parts = raw.split("#");
-      const base = parts[0];
-      if (!base.endsWith(".html")) return;
-      const hash = parts.length > 1 ? "#" + parts.slice(1).join("#") : "";
-      const url = new URL(base, location.href);
-      if (lang === "en") url.searchParams.set("lang", "en");
-      else url.searchParams.delete("lang");
-      a.setAttribute("href", url.pathname.split("/").pop() + (url.search || "") + hash);
-    });
-  };
+  let currentLang = "zh";
 
   const syncResume = (lang) => {
     const frame = document.querySelector(".pdf-frame iframe");
@@ -71,7 +54,6 @@
     });
 
     syncResume(lang);
-    syncLinks(lang);
     cleanLangParam();
   };
 
