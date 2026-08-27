@@ -7,8 +7,33 @@
 
   /* ---------- 多语言切换（简体中文 / English） ---------- */
   const I18N = window.I18N || {};
-  const savedLang = localStorage.getItem("site-lang") || "zh";
+  const urlLang = new URLSearchParams(location.search).get("lang");
+  const savedLang = urlLang || localStorage.getItem("site-lang") || "zh";
   let currentLang = savedLang === "en" ? "en" : "zh";
+
+  const syncLinks = (lang) => {
+    document.querySelectorAll("a[href]").forEach((a) => {
+      const raw = a.getAttribute("href");
+      if (!raw || /^(https?:|mailto:|tel:|data:|javascript:)/.test(raw)) return;
+      const parts = raw.split("#");
+      const base = parts[0];
+      if (!base.endsWith(".html")) return;
+      const hash = parts.length > 1 ? "#" + parts.slice(1).join("#") : "";
+      const url = new URL(base, location.href);
+      if (lang === "en") url.searchParams.set("lang", "en");
+      else url.searchParams.delete("lang");
+      a.setAttribute("href", url.pathname.split("/").pop() + (url.search || "") + hash);
+    });
+  };
+
+  const syncResume = (lang) => {
+    const frame = document.querySelector(".pdf-frame iframe");
+    if (frame) frame.src = lang === "en" ? "assets/resume-en.pdf" : "assets/resume.pdf";
+    document.querySelectorAll("[data-resume-download]").forEach((a) => {
+      a.href = lang === "en" ? "assets/resume-en.pdf" : "assets/resume.pdf";
+      a.setAttribute("download", lang === "en" ? "Li-Xinyang-Resume-EN.pdf" : "李鑫阳-产品运营-简历.pdf");
+    });
+  };
 
   const applyLang = (lang) => {
     const dict = I18N[lang] || I18N.zh || {};
@@ -36,6 +61,14 @@
       btn.classList.toggle("active", btn.dataset.lang === lang);
       btn.setAttribute("aria-pressed", String(btn.dataset.lang === lang));
     });
+
+    syncLinks(lang);
+    syncResume(lang);
+
+    const url = new URL(location.href);
+    if (lang === "en") url.searchParams.set("lang", "en");
+    else url.searchParams.delete("lang");
+    if (url.href !== location.href) history.replaceState(null, "", url.href);
   };
 
   document.querySelectorAll(".lang-switch button[data-lang]").forEach((btn) => {

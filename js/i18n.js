@@ -405,7 +405,7 @@ window.I18N = {
     "resume.eyebrow": "Resume ✿",
     "resume.pageTitle": "Get My Resume",
     "resume.desc": "Preview online or download the PDF — feel free to forward it to the right team.",
-    "resume.hint": "📄 Li Xinyang · Product/Operations Resume (Updated Aug 2026 · Chinese)",
+    "resume.hint": "📄 Li Xinyang · Product/Operations Resume (Updated Aug 2026 · English Version)",
     "resume.download": "⬇ Download Resume PDF",
     "resume.fallback.title": "📄",
     "resume.fallback.text": "Your browser doesn't support inline PDF preview — just download it instead.",
