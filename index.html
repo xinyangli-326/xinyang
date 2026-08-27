@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body data-title-key="index.title" data-meta-key="index.meta">
 
   <!-- ==================== 顶部导航 ==================== -->
   <header class="nav-wrap">
@@ -29,6 +29,10 @@
         <li><a data-page="resume.html" href="resume.html">获取简历</a></li>
         <li><a class="nav-cta" href="mailto:320589552@qq.com">来聊聊 ✉</a></li>
       </ul>
+      <div class="lang-switch" role="group" aria-label="语言选择 / Language">
+        <button type="button" data-lang="zh" aria-pressed="true">简体中文</button>
+        <button type="button" data-lang="en" aria-pressed="false">English</button>
+      </div>
       <button class="nav-burger" aria-label="打开菜单" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -41,22 +45,22 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="hero-eyebrow">📮 正在求职 · 产品 / 运营</p>
-          <h1 class="hero-title">你好，我是<span class="name-highlight">李鑫阳</span><span class="wave">👋</span></h1>
-          <p class="hero-sub">
+          <p class="hero-eyebrow" data-i18n="hero.eyebrow">📮 正在求职 · 产品 / 运营</p>
+          <h1 class="hero-title" data-i18n-html="hero.title">你好，我是<span class="name-highlight">李鑫阳</span><span class="wave">👋</span></h1>
+          <p class="hero-sub" data-i18n="hero.sub">
             25 岁。懂商品、懂电商数据、更懂用 AI 提效——
             独立搭建过营销内容中台，把「一个人顶一个宣传团队」变成现实。
             希望把「理性方法 + AI 效率 + 一点点可爱」带进团队。
           </p>
           <div class="hero-badges">
-            <span class="hero-badge">🎯 期望岗位 · 产品类 / 运营类</span>
-            <span class="hero-badge">🧩 3 段实习经历</span>
-            <span class="hero-badge">🚀 AI 内容中台独立开发者</span>
-            <span class="hero-badge">🤖 AI 工具十级玩家</span>
+            <span class="hero-badge" data-i18n="hero.b1">🎯 期望岗位 · 产品类 / 运营类</span>
+            <span class="hero-badge" data-i18n="hero.b2">🧩 3 段实习经历</span>
+            <span class="hero-badge" data-i18n="hero.b3">🚀 AI 内容中台独立开发者</span>
+            <span class="hero-badge" data-i18n="hero.b4">🤖 AI 工具十级玩家</span>
           </div>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="experience.html">看看我的实习经历 ↓</a>
-            <a class="btn btn-ghost" href="projects.html">vibe coding 作品</a>
+            <a class="btn btn-primary" href="experience.html" data-i18n="hero.btn1">看看我的实习经历 ↓</a>
+            <a class="btn btn-ghost" href="projects.html" data-i18n="hero.btn2">vibe coding 作品</a>
           </div>
         </div>
 
@@ -72,7 +76,7 @@
             <span class="tape"></span>
             <span class="tape tape-2"></span>
             <img src="assets/photo.jpg" alt="李鑫阳的个人照片" width="720" height="720" />
-            <figcaption class="polaroid-note">李鑫阳 · 2026 ✿</figcaption>
+            <figcaption class="polaroid-note" data-i18n="polaroid.note">李鑫阳 · 2026 ✿</figcaption>
           </figure>
         </div>
       </div>
@@ -81,28 +85,28 @@
     <!-- ==================== 模块快速导航 ==================== -->
     <section class="section">
       <div class="container">
-        <h2 class="section-title" style="text-align:center">这里有什么？<span style="font-size:0.8em">👀</span></h2>
-        <p class="section-sub" style="text-align:center">点一点，去你想看的模块</p>
+        <h2 class="section-title" style="text-align:center" data-i18n-html="index.moduleTitle">这里有什么？<span style="font-size:0.8em">👀</span></h2>
+        <p class="section-sub" style="text-align:center" data-i18n="index.moduleSub">点一点，去你想看的模块</p>
         <div class="module-grid">
           <a class="card module-card module-blue reveal" href="education.html">
             <span class="module-emoji">🎓</span>
-            <h3>教育背景</h3>
-            <p>硕士 & 本科</p>
+            <h3 data-i18n="module1.t">教育背景</h3>
+            <p data-i18n="module1.d">硕士 & 本科</p>
           </a>
           <a class="card module-card module-pink reveal d1" href="experience.html">
             <span class="module-emoji">💼</span>
-            <h3>实习经历</h3>
-            <p>3 段 · 倒序</p>
+            <h3 data-i18n="module2.t">实习经历</h3>
+            <p data-i18n="module2.d">3 段 · 倒序</p>
           </a>
           <a class="card module-card module-purple reveal d2" href="projects.html">
             <span class="module-emoji">🤖</span>
-            <h3>vibe coding 作品</h3>
-            <p>用 AI 把想法变真</p>
+            <h3 data-i18n="module3.t">vibe coding 作品</h3>
+            <p data-i18n="module3.d">用 AI 把想法变真</p>
           </a>
           <a class="card module-card module-beige reveal d3" href="hobbies.html">
             <span class="module-emoji">🎨</span>
-            <h3>爱好</h3>
-            <p>工作之外的「我」</p>
+            <h3 data-i18n="module4.t">爱好</h3>
+            <p data-i18n="module4.d">工作之外的「我」</p>
           </a>
         </div>
       </div>
@@ -111,35 +115,35 @@
     <!-- ==================== 个人优势 ==================== -->
     <section class="section">
       <div class="container">
-        <h2 class="section-title" style="text-align:center">我的小优势 <span style="font-size:0.8em">💪</span></h2>
-        <p class="section-sub" style="text-align:center">简历里最想让你记住的四件事</p>
+        <h2 class="section-title" style="text-align:center" data-i18n-html="index.strengthTitle">我的小优势 <span style="font-size:0.8em">💪</span></h2>
+        <p class="section-sub" style="text-align:center" data-i18n="index.strengthSub">简历里最想让你记住的四件事</p>
         <div class="strength-grid">
           <article class="card strength-card s-pink reveal">
             <span class="s-icon">📦</span>
             <div>
-              <h4>商品与供应商管理</h4>
-              <p>供应商寻源、招募与质量管理，理解品类运营与毛利、成本控制逻辑。</p>
+              <h4 data-i18n="s1.t">商品与供应商管理</h4>
+              <p data-i18n="s1.d">供应商寻源、招募与质量管理，理解品类运营与毛利、成本控制逻辑。</p>
             </div>
           </article>
           <article class="card strength-card s-purple reveal d1">
             <span class="s-icon">📊</span>
             <div>
-              <h4>数据驱动的电商运营</h4>
-              <p>熟悉 GMV、毛利、转化率等核心指标，曾推动直播带货 GMV 与毛利提升约 20%、业务量化增长 30%。</p>
+              <h4 data-i18n="s2.t">数据驱动的电商运营</h4>
+              <p data-i18n="s2.d">熟悉 GMV、毛利、转化率等核心指标，曾推动直播带货 GMV 与毛利提升约 20%、业务量化增长 30%。</p>
             </div>
           </article>
           <article class="card strength-card s-blue reveal d2">
             <span class="s-icon">🤝</span>
             <div>
-              <h4>商务谈判与跨部门协同</h4>
-              <p>对接 LD、OC、CB、财务、法务及各 HRBP，推动多方目标对齐并落地执行。</p>
+              <h4 data-i18n="s3.t">商务谈判与跨部门协同</h4>
+              <p data-i18n="s3.d">对接 LD、OC、CB、财务、法务及各 HRBP，推动多方目标对齐并落地执行。</p>
             </div>
           </article>
           <article class="card strength-card s-beige reveal d3">
             <span class="s-icon">🤖</span>
             <div>
-              <h4>AI 工具与数字化提效</h4>
-              <p>熟练运用 Codex、DeepSeek、Kimi 等 AI 工具，独立搭建营销内容中台与 AI 知识库。</p>
+              <h4 data-i18n="s4.t">AI 工具与数字化提效</h4>
+              <p data-i18n="s4.d">熟练运用 Codex、DeepSeek、Kimi 等 AI 工具，独立搭建营销内容中台与 AI 知识库。</p>
             </div>
           </article>
         </div>
@@ -152,8 +156,8 @@
         <div class="card honor-card reveal" style="max-width:720px">
           <span class="trophy">🗒️</span>
           <div>
-            <h3 style="font-size:1.15rem;margin-bottom:6px">一句话认识我</h3>
-            <p style="color:var(--ink-soft)">求职方向产品类 / 运营类。用 vibe coding 独立搭建 AI 营销内容中台，单次宣传物料 3 分钟以内产出、海报零 AI 痕迹，带动业务 30% 量化增长——既懂业务，也懂效率。</p>
+            <h3 style="font-size:1.15rem;margin-bottom:6px" data-i18n="index.noteTitle">一句话认识我</h3>
+            <p style="color:var(--ink-soft)" data-i18n="index.noteText">求职方向产品类 / 运营类。用 vibe coding 独立搭建 AI 营销内容中台，单次宣传物料 3 分钟以内产出、海报零 AI 痕迹，带动业务 30% 量化增长——既懂业务，也懂效率。</p>
           </div>
         </div>
       </div>
@@ -163,12 +167,12 @@
     <section class="section" id="contact">
       <div class="container">
         <div class="card contact-card reveal">
-          <p class="contact-kicker">如果你也在找一位愿意折腾的产品运营——</p>
-          <h2>我们一起做点<span>有意思的事</span>吧！</h2>
-          <p class="contact-sub">邮箱、电话都行，请随意拍一拍我 🐰</p>
+          <p class="contact-kicker" data-i18n="contact.kicker">如果你也在找一位愿意折腾的产品运营——</p>
+          <h2 data-i18n-html="contact.title">我们一起做点<span>有意思的事</span>吧！</h2>
+          <p class="contact-sub" data-i18n="contact.sub">邮箱、电话都行，请随意拍一拍我 🐰</p>
           <div class="contact-actions">
-            <a class="btn btn-primary btn-big" href="mailto:320589552@qq.com">📮 320589552@qq.com</a>
-            <a class="btn btn-ghost btn-big" href="tel:15317270326">📞 15317270326</a>
+            <a class="btn btn-primary btn-big" href="mailto:320589552@qq.com" data-i18n="contact.email">📮 320589552@qq.com</a>
+            <a class="btn btn-ghost btn-big" href="tel:15317270326" data-i18n="contact.phone">📞 15317270326</a>
           </div>
         </div>
       </div>
@@ -176,11 +180,12 @@
   </main>
 
   <footer class="footer">
-    <p>© <span id="year">2026</span> 李鑫阳 · 用 ❤ 和 🍰 建造</p>
-    <p class="footer-note">求职中 · 欢迎推荐合适的机会 ✨</p>
+    <p>© <span id="year">2026</span> <span data-i18n="footer.copy2">李鑫阳 · 用 ❤ 和 🍰 建造</span></p>
+    <p class="footer-note" data-i18n="footer.note">求职中 · 欢迎推荐合适的机会 ✨</p>
   </footer>
 
   <button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

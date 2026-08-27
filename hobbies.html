@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body data-title-key="hobby.title" data-meta-key="hobby.meta">
 
   <header class="nav-wrap">
     <nav class="nav container">
@@ -28,6 +28,10 @@
         <li><a data-page="resume.html" href="resume.html">获取简历</a></li>
         <li><a class="nav-cta" href="mailto:320589552@qq.com">来聊聊 ✉</a></li>
       </ul>
+      <div class="lang-switch" role="group" aria-label="语言选择 / Language">
+        <button type="button" data-lang="zh" aria-pressed="true">简体中文</button>
+        <button type="button" data-lang="en" aria-pressed="false">English</button>
+      </div>
       <button class="nav-burger" aria-label="打开菜单" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -37,9 +41,9 @@
   <main>
     <section class="page-hero">
       <div class="container">
-        <span class="page-eyebrow">Hobbies ✿ 爱好</span>
-        <h1 class="page-title">工作之外的「我」</h1>
-        <p class="page-desc">这一页先按简历里真实出现的线索整理，更多爱好和照片随时发给我补充 ✍️</p>
+        <span class="page-eyebrow" data-i18n="hobby.eyebrow">Hobbies ✿ 爱好</span>
+        <h1 class="page-title" data-i18n="hobby.pageTitle">工作之外的「我」</h1>
+        <p class="page-desc" data-i18n="hobby.desc">这一页先按简历里真实出现的线索整理，更多爱好和照片随时发给我补充 ✍️</p>
       </div>
     </section>
 
@@ -49,26 +53,26 @@
 
           <article class="card hobby-card h-pink reveal">
             <span class="h-emoji">🎨</span>
-            <h3>设计小能手</h3>
-            <p>熟练用 Photoshop 做海报、做图，招募海报和宣传物料都自己上手，不外包。</p>
+            <h3 data-i18n="hobby.1.t">设计小能手</h3>
+            <p data-i18n="hobby.1.d">熟练用 Photoshop 做海报、做图，招募海报和宣传物料都自己上手，不外包。</p>
           </article>
 
           <article class="card hobby-card h-purple reveal d1">
             <span class="h-emoji">📕</span>
-            <h3>内容创作</h3>
-            <p>运营过十万粉账号，写文案、想标题、排笔记，像喝水一样自然。</p>
+            <h3 data-i18n="hobby.2.t">内容创作</h3>
+            <p data-i18n="hobby.2.d">运营过十万粉账号，写文案、想标题、排笔记，像喝水一样自然。</p>
           </article>
 
           <article class="card hobby-card h-blue reveal d2">
             <span class="h-emoji">🤖</span>
-            <h3>AI 折腾派</h3>
-            <p>每天跟各种 AI 工具玩耍，喜欢研究怎么把工具用到极致、变成生产力。</p>
+            <h3 data-i18n="hobby.3.t">AI 折腾派</h3>
+            <p data-i18n="hobby.3.d">每天跟各种 AI 工具玩耍，喜欢研究怎么把工具用到极致、变成生产力。</p>
           </article>
 
           <article class="card hobby-card h-beige reveal d3">
             <span class="h-emoji">💬</span>
-            <h3>社群氛围组</h3>
-            <p>把 0 活跃的新员工社群做到 40% 活跃——大家愿意说话，就是我的成就感。</p>
+            <h3 data-i18n="hobby.4.t">社群氛围组</h3>
+            <p data-i18n="hobby.4.d">把 0 活跃的新员工社群做到 40% 活跃——大家愿意说话，就是我的成就感。</p>
           </article>
 
         </div>
@@ -78,8 +82,8 @@
     <!-- 生活照片墙（等你补充真实照片） -->
     <section class="section">
       <div class="container">
-        <h2 class="section-title" style="text-align:center">生活照片墙 <span style="font-size:0.8em">📷</span></h2>
-        <p class="section-sub" style="text-align:center">把你的真实照片发给我，我贴在这里</p>
+        <h2 class="section-title" style="text-align:center" data-i18n-html="hobby.photoTitle">生活照片墙 <span style="font-size:0.8em">📷</span></h2>
+        <p class="section-sub" style="text-align:center" data-i18n="hobby.photoSub">把你的真实照片发给我，我贴在这里</p>
         <div class="h-photo-strip">
           <div class="h-photo">📷</div>
           <div class="h-photo">🌷</div>
@@ -92,8 +96,8 @@
     <section class="section">
       <div class="container">
         <div class="card reveal" style="max-width:720px;margin:0 auto;text-align:center;background:linear-gradient(135deg,var(--beige-soft),var(--pink-soft))">
-          <p class="contact-kicker" style="margin-bottom:8px">手账注释</p>
-          <p style="color:var(--ink-soft)">
+          <p class="contact-kicker" style="margin-bottom:8px" data-i18n="hobby.noteTitle">手账注释</p>
+          <p style="color:var(--ink-soft)" data-i18n="hobby.noteText">
             兴趣是最好的简历——真实的爱好，比任何模板都更能让人记住你。
             这部分内容都来自简历线索，想补充或修改随时告诉我。
           </p>
@@ -103,11 +107,12 @@
   </main>
 
   <footer class="footer">
-    <p>© <span id="year">2026</span> 李鑫阳 · 用 ❤ 和 🍰 建造</p>
-    <p class="footer-note">求职中 · 欢迎推荐合适的机会 ✨</p>
+    <p>© <span id="year">2026</span> <span data-i18n="footer.copy2">李鑫阳 · 用 ❤ 和 🍰 建造</span></p>
+    <p class="footer-note" data-i18n="footer.note">求职中 · 欢迎推荐合适的机会 ✨</p>
   </footer>
 
   <button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -21,7 +21,7 @@
     @media (max-width: 680px) { .resume-toolbar { justify-content: center; text-align: center; } }
   </style>
 </head>
-<body>
+<body data-title-key="resume.title" data-meta-key="resume.meta">
 
   <header class="nav-wrap">
     <nav class="nav container">
@@ -38,6 +38,10 @@
         <li><a data-page="resume.html" href="resume.html">获取简历</a></li>
         <li><a class="nav-cta" href="mailto:320589552@qq.com">来聊聊 ✉</a></li>
       </ul>
+      <div class="lang-switch" role="group" aria-label="语言选择 / Language">
+        <button type="button" data-lang="zh" aria-pressed="true">简体中文</button>
+        <button type="button" data-lang="en" aria-pressed="false">English</button>
+      </div>
       <button class="nav-burger" aria-label="打开菜单" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -47,25 +51,25 @@
   <main>
     <section class="page-hero">
       <div class="container">
-        <span class="page-eyebrow">Resume ✿ 简历</span>
-        <h1 class="page-title">获取我的简历</h1>
-        <p class="page-desc">在线预览，或直接下载 PDF 带走——随时欢迎转发给合适的团队。</p>
+        <span class="page-eyebrow" data-i18n="resume.eyebrow">Resume ✿ 简历</span>
+        <h1 class="page-title" data-i18n="resume.pageTitle">获取我的简历</h1>
+        <p class="page-desc" data-i18n="resume.desc">在线预览，或直接下载 PDF 带走——随时欢迎转发给合适的团队。</p>
       </div>
     </section>
 
     <section class="section" style="padding-top:20px">
       <div class="container">
         <div class="resume-toolbar">
-          <p class="resume-hint">📄 李鑫阳 · 产品类 / 运营类求职简历（2026.08 更新）</p>
-          <a class="btn btn-primary" href="assets/resume.pdf" download="李鑫阳-产品运营-简历.pdf">⬇ 下载简历 PDF</a>
+          <p class="resume-hint" data-i18n="resume.hint">📄 李鑫阳 · 产品类 / 运营类求职简历（2026.08 更新 · 中文版）</p>
+          <a class="btn btn-primary" href="assets/resume.pdf" download="李鑫阳-产品运营-简历.pdf" data-i18n="resume.download">⬇ 下载简历 PDF</a>
         </div>
 
         <div class="pdf-frame">
           <iframe src="assets/resume.pdf" title="李鑫阳简历 PDF" loading="lazy"></iframe>
           <div class="pdf-fallback" id="pdfFallback">
-            <div class="big">📄</div>
-            <p>你的浏览器不支持内嵌 PDF 预览，可以直接下载查看。</p>
-            <a class="btn btn-primary" href="assets/resume.pdf" download="李鑫阳-产品运营-简历.pdf">⬇ 下载简历 PDF</a>
+            <div class="big" data-i18n="resume.fallback.title">📄</div>
+            <p data-i18n="resume.fallback.text">你的浏览器不支持内嵌 PDF 预览，可以直接下载查看。</p>
+            <a class="btn btn-primary" href="assets/resume.pdf" download="李鑫阳-产品运营-简历.pdf" data-i18n="resume.download">⬇ 下载简历 PDF</a>
           </div>
         </div>
       </div>
@@ -75,8 +79,8 @@
     <section class="section">
       <div class="container">
         <div class="card reveal" style="max-width:720px;margin:0 auto;text-align:center;background:linear-gradient(135deg,var(--pink-soft),var(--blue-soft))">
-          <p class="contact-kicker" style="margin-bottom:8px">手账注释</p>
-          <p style="color:var(--ink-soft)">
+          <p class="contact-kicker" style="margin-bottom:8px" data-i18n="resume.noteTitle">手账注释</p>
+          <p style="color:var(--ink-soft)" data-i18n="resume.noteText">
             简历会随经历持续更新——如果你看到的版本不是最新的，欢迎随时找我要一份。
           </p>
         </div>
@@ -85,11 +89,12 @@
   </main>
 
   <footer class="footer">
-    <p>© <span id="year">2026</span> 李鑫阳 · 用 ❤ 和 🍰 建造</p>
-    <p class="footer-note">求职中 · 欢迎推荐合适的机会 ✨</p>
+    <p>© <span id="year">2026</span> <span data-i18n="footer.copy2">李鑫阳 · 用 ❤ 和 🍰 建造</span></p>
+    <p class="footer-note" data-i18n="footer.note">求职中 · 欢迎推荐合适的机会 ✨</p>
   </footer>
 
   <button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
   <script>
     // 检测 PDF 预览是否可用：某些浏览器/移动端不支持内嵌 PDF

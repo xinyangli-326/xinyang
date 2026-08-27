@@ -5,6 +5,49 @@
 (() => {
   "use strict";
 
+  /* ---------- 多语言切换（简体中文 / English） ---------- */
+  const I18N = window.I18N || {};
+  const savedLang = localStorage.getItem("site-lang") || "zh";
+  let currentLang = savedLang === "en" ? "en" : "zh";
+
+  const applyLang = (lang) => {
+    const dict = I18N[lang] || I18N.zh || {};
+    document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
+
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const val = dict[el.dataset.i18n];
+      if (val !== undefined) el.textContent = val;
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+      const val = dict[el.dataset.i18nHtml];
+      if (val !== undefined) el.innerHTML = val;
+    });
+
+    const titleKey = document.body.dataset.titleKey;
+    if (titleKey && dict[titleKey]) document.title = dict[titleKey];
+
+    const metaKey = document.body.dataset.metaKey;
+    if (metaKey && dict[metaKey]) {
+      const meta = document.querySelector('meta[name="description"]');
+      if (meta) meta.content = dict[metaKey];
+    }
+
+    document.querySelectorAll(".lang-switch button[data-lang]").forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.lang === lang);
+      btn.setAttribute("aria-pressed", String(btn.dataset.lang === lang));
+    });
+  };
+
+  document.querySelectorAll(".lang-switch button[data-lang]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      currentLang = btn.dataset.lang === "en" ? "en" : "zh";
+      localStorage.setItem("site-lang", currentLang);
+      applyLang(currentLang);
+    });
+  });
+
+  applyLang(currentLang);
+
   /* ---------- 移动端导航 ---------- */
   const burger = document.querySelector(".nav-burger");
   const navLinks = document.querySelector(".nav-links");

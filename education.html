@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body data-title-key="edu.title" data-meta-key="edu.meta">
 
   <header class="nav-wrap">
     <nav class="nav container">
@@ -28,6 +28,10 @@
         <li><a data-page="resume.html" href="resume.html">获取简历</a></li>
         <li><a class="nav-cta" href="mailto:320589552@qq.com">来聊聊 ✉</a></li>
       </ul>
+      <div class="lang-switch" role="group" aria-label="语言选择 / Language">
+        <button type="button" data-lang="zh" aria-pressed="true">简体中文</button>
+        <button type="button" data-lang="en" aria-pressed="false">English</button>
+      </div>
       <button class="nav-burger" aria-label="打开菜单" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -37,9 +41,9 @@
   <main>
     <section class="page-hero">
       <div class="container">
-        <span class="page-eyebrow">Education ✿ 教育背景</span>
-        <h1 class="page-title">我的学习旅程</h1>
-        <p class="page-desc">从会计到国际中文教育，专业不同，但「读懂人、算清账」的心一直在。</p>
+        <span class="page-eyebrow" data-i18n="edu.eyebrow">Education ✿ 教育背景</span>
+        <h1 class="page-title" data-i18n="edu.pageTitle">我的学习旅程</h1>
+        <p class="page-desc" data-i18n="edu.desc">从会计到国际中文教育，专业不同，但「读懂人、算清账」的心一直在。</p>
       </div>
     </section>
 
@@ -55,20 +59,20 @@
               <div style="flex:1">
                 <div class="timeline-head" style="margin-bottom:8px">
                   <div>
-                    <h3>硕士研究生 · 国际中文教育</h3>
-                    <p class="timeline-org">重庆交通大学</p>
+                    <h3 data-i18n="edu.master.title">硕士研究生 · 国际中文教育</h3>
+                    <p class="timeline-org" data-i18n="edu.master.org">重庆交通大学</p>
                   </div>
-                  <span class="timeline-date">2024.09 – 2027.06</span>
+                  <span class="timeline-date" data-i18n="edu.master.date">2024.09 – 2027.06</span>
                 </div>
-                <p class="edu-meta">硕士 · 在读（预计 2027.6 毕业）</p>
-                <p class="edu-desc">
+                <p class="edu-meta" data-i18n="edu.master.meta">硕士 · 在读（预计 2027.06 毕业）</p>
+                <p class="edu-desc" data-i18n="edu.master.desc">
                   跨文化视角理解「人」与「表达」，和做运营的底层能力相通：
                   翻译是理解对方想说什么，运营是理解用户想要什么。
                 </p>
                 <div class="work-tags">
-                  <span class="chip c-purple">跨文化沟通</span>
-                  <span class="chip c-pink">内容表达</span>
-                  <span class="chip c-blue">用户共情</span>
+                  <span class="chip c-purple" data-i18n="edu.master.tag1">跨文化沟通</span>
+                  <span class="chip c-pink" data-i18n="edu.master.tag2">内容表达</span>
+                  <span class="chip c-blue" data-i18n="edu.master.tag3">用户共情</span>
                 </div>
               </div>
             </div>
@@ -82,20 +86,20 @@
               <div style="flex:1">
                 <div class="timeline-head" style="margin-bottom:8px">
                   <div>
-                    <h3>本科 · 会计</h3>
-                    <p class="timeline-org">上海杉达学院</p>
+                    <h3 data-i18n="edu.bachelor.title">本科 · 会计</h3>
+                    <p class="timeline-org" data-i18n="edu.bachelor.org">上海杉达学院</p>
                   </div>
-                  <span class="timeline-date">2022.09 – 2024.06</span>
+                  <span class="timeline-date" data-i18n="edu.bachelor.date">2022.09 – 2024.06</span>
                 </div>
-                <p class="edu-meta">本科 · 已毕业</p>
-                <p class="edu-desc">
+                <p class="edu-meta" data-i18n="edu.bachelor.meta">本科 · 已毕业</p>
+                <p class="edu-desc" data-i18n="edu.bachelor.desc">
                   会计专业培养了我的数据敏感性和严谨习惯：
                   每笔账都要对得上，每个数字都经得起追问。
                 </p>
                 <div class="work-tags">
-                  <span class="chip c-blue">数据敏感</span>
-                  <span class="chip c-beige">严谨细致</span>
-                  <span class="chip c-purple">成本意识</span>
+                  <span class="chip c-blue" data-i18n="edu.bachelor.tag1">数据敏感</span>
+                  <span class="chip c-beige" data-i18n="edu.bachelor.tag2">严谨细致</span>
+                  <span class="chip c-purple" data-i18n="edu.bachelor.tag3">成本意识</span>
                 </div>
               </div>
             </div>
@@ -108,12 +112,12 @@
     <!-- 荣誉奖项 -->
     <section class="section">
       <div class="container">
-        <h2 class="section-title" style="text-align:center">荣誉证书 <span style="font-size:0.8em">🏆</span></h2>
+        <h2 class="section-title" style="text-align:center" data-i18n-html="edu.honorTitle">荣誉证书 <span style="font-size:0.8em">🏆</span></h2>
         <div class="card honor-card reveal">
           <span class="trophy">🥇</span>
           <div>
-            <h3 style="font-size:1.15rem;margin-bottom:4px">一等奖学金</h3>
-            <p style="color:var(--ink-soft);font-size:0.95rem">在校期间获得（如需要补充具体学年，随时告诉我）</p>
+            <h3 style="font-size:1.15rem;margin-bottom:4px" data-i18n="edu.honor.title">一等奖学金</h3>
+            <p style="color:var(--ink-soft);font-size:0.95rem" data-i18n="edu.honor.desc">在校期间获得（如需要补充具体学年，随时告诉我）</p>
           </div>
         </div>
       </div>
@@ -123,8 +127,8 @@
     <section class="section">
       <div class="container">
         <div class="card reveal" style="max-width:720px;margin:0 auto;text-align:center;background:linear-gradient(135deg,var(--purple-soft),var(--blue-soft))">
-          <p class="contact-kicker" style="margin-bottom:8px">手账注释</p>
-          <p style="color:var(--ink-soft)">
+          <p class="contact-kicker" style="margin-bottom:8px" data-i18n="edu.noteTitle">手账注释</p>
+          <p style="color:var(--ink-soft)" data-i18n="edu.noteText">
             会计教会我「数字要算清」，中文教育教会我「表达要讲人话」——
             这两个技能组合起来，大概就是我做运营的底色吧。
           </p>
@@ -134,11 +138,12 @@
   </main>
 
   <footer class="footer">
-    <p>© <span id="year">2026</span> 李鑫阳 · 用 ❤ 和 🍰 建造</p>
-    <p class="footer-note">求职中 · 欢迎推荐合适的机会 ✨</p>
+    <p>© <span id="year">2026</span> <span data-i18n="footer.copy2">李鑫阳 · 用 ❤ 和 🍰 建造</span></p>
+    <p class="footer-note" data-i18n="footer.note">求职中 · 欢迎推荐合适的机会 ✨</p>
   </footer>
 
   <button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
