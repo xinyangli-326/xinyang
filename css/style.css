@@ -602,7 +602,7 @@ main { position: relative; z-index: 1; }
   margin-bottom: 4px;
 }
 
-.role-tag .role-value { font-size: 1.06rem; font-weight: 900; }
+.role-tag .role-value { font-size: 0.98rem; font-weight: 900; line-height: 1.45; }
 
 .role-company { background: var(--blue-soft); border-color: var(--blue); color: var(--blue-deep); }
 .role-dept { background: var(--purple-soft); border-color: var(--purple); color: var(--purple-deep); }
