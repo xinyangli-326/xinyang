@@ -764,6 +764,17 @@ main { position: relative; z-index: 1; }
 .project-actions { margin-top: 18px; }
 .project-actions .btn { padding: 11px 20px; font-size: 0.95rem; }
 
+.case-note {
+  margin-top: 18px;
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  background: var(--blue-soft);
+  border: 1.5px dashed var(--blue);
+  border-radius: var(--radius-sm);
+}
+
 /* ============ 海报案例展示 ============ */
 .poster-card .poster-intro { font-size: 0.95rem; color: var(--ink-soft); margin-bottom: 16px; }
 
