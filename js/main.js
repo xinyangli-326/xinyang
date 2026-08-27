@@ -7,6 +7,10 @@
 
   /* ---------- 多语言切换（简体中文 / English） ---------- */
   const I18N = window.I18N || {};
+  try {
+    localStorage.removeItem("site-lang");
+    sessionStorage.removeItem("site-lang");
+  } catch (e) { /* ignore */ }
   let currentLang = "zh";
 
   const syncResume = (lang) => {
