@@ -7,24 +7,8 @@
 
   /* ---------- 多语言切换（简体中文 / English） ---------- */
   const I18N = window.I18N || {};
-  const urlLang = new URLSearchParams(location.search).get("lang");
-  const savedLang = urlLang || "zh";
+  const savedLang = sessionStorage.getItem("site-lang") || "zh";
   let currentLang = savedLang === "en" ? "en" : "zh";
-
-  const syncLinks = (lang) => {
-    document.querySelectorAll("a[href]").forEach((a) => {
-      const raw = a.getAttribute("href");
-      if (!raw || /^(https?:|mailto:|tel:|data:|javascript:)/.test(raw)) return;
-      const parts = raw.split("#");
-      const base = parts[0];
-      if (!base.endsWith(".html")) return;
-      const hash = parts.length > 1 ? "#" + parts.slice(1).join("#") : "";
-      const url = new URL(base, location.href);
-      if (lang === "en") url.searchParams.set("lang", "en");
-      else url.searchParams.delete("lang");
-      a.setAttribute("href", url.pathname.split("/").pop() + (url.search || "") + hash);
-    });
-  };
 
   const syncResume = (lang) => {
     const frame = document.querySelector(".pdf-frame iframe");
@@ -33,6 +17,14 @@
       a.href = lang === "en" ? "assets/resume-en.pdf" : "assets/resume.pdf";
       a.setAttribute("download", lang === "en" ? "Li-Xinyang-Resume-EN.pdf" : "李鑫阳-产品运营-简历.pdf");
     });
+  };
+
+  const cleanLangParam = () => {
+    const url = new URL(location.href);
+    if (url.searchParams.has("lang")) {
+      url.searchParams.delete("lang");
+      history.replaceState(null, "", url.href);
+    }
   };
 
   const applyLang = (lang) => {
@@ -62,112 +54,19 @@
       btn.setAttribute("aria-pressed", String(btn.dataset.lang === lang));
     });
 
-    syncLinks(lang);
     syncResume(lang);
-
-    const url = new URL(location.href);
-    if (lang === "en") url.searchParams.set("lang", "en");
-    else url.searchParams.delete("lang");
-    if (url.href !== location.href) history.replaceState(null, "", url.href);
+    cleanLangParam();
   };
 
   document.querySelectorAll(".lang-switch button[data-lang]").forEach((btn) => {
     btn.addEventListener("click", () => {
       currentLang = btn.dataset.lang === "en" ? "en" : "zh";
-      localStorage.setItem("site-lang", currentLang);
+      sessionStorage.setItem("site-lang", currentLang);
       applyLang(currentLang);
     });
   });
 
   applyLang(currentLang);
-
-  /* ---------- 联系面板（来聊聊，不跳转） ---------- */
-  let contactModal = null;
-
-  const buildContactModal = () => {
-    if (contactModal) return contactModal;
-    contactModal = document.createElement("div");
-    contactModal.className = "contact-modal";
-    contactModal.setAttribute("aria-hidden", "true");
-    contactModal.innerHTML = `
-      <div class="contact-modal-card" role="dialog" aria-modal="true">
-        <button type="button" class="lb-btn lb-close" data-contact-close aria-label="Close">×</button>
-        <p class="contact-kicker" data-i18n="contact.modal.kicker">来聊聊 ✉</p>
-        <h3 data-i18n="contact.modal.title">随时欢迎拍一拍我 🐰</h3>
-        <div class="contact-item">
-          <span class="contact-item-label" data-i18n="contact.modal.email">📮 邮箱</span>
-          <a class="contact-item-value" href="mailto:320589552@qq.com">320589552@qq.com</a>
-          <button type="button" class="contact-copy" data-copy="320589552@qq.com" data-i18n="contact.modal.copy">复制</button>
-        </div>
-        <div class="contact-item">
-          <span class="contact-item-label" data-i18n="contact.modal.phone">📞 电话</span>
-          <a class="contact-item-value" href="tel:15317270326">15317270326</a>
-          <button type="button" class="contact-copy" data-copy="15317270326" data-i18n="contact.modal.copy">复制</button>
-        </div>
-        <div class="contact-modal-actions">
-          <a class="btn btn-primary" href="mailto:320589552@qq.com" data-i18n="contact.modal.mail">写封邮件</a>
-        </div>
-        <p class="contact-copied" data-i18n="contact.modal.copied">✓ 已复制</p>
-      </div>`;
-    document.body.appendChild(contactModal);
-
-    contactModal.addEventListener("click", (e) => {
-      if (e.target === contactModal || e.target.closest("[data-contact-close]")) closeContact();
-    });
-
-    contactModal.querySelectorAll("[data-copy]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const text = btn.dataset.copy;
-        const done = () => {
-          const tip = contactModal.querySelector(".contact-copied");
-          tip.classList.add("show");
-          clearTimeout(tip._t);
-          tip._t = setTimeout(() => tip.classList.remove("show"), 1600);
-        };
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
-        } else {
-          fallbackCopy(text, done);
-        }
-      });
-    });
-
-    return contactModal;
-  };
-
-  const fallbackCopy = (text, done) => {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.style.position = "fixed";
-    ta.style.opacity = "0";
-    document.body.appendChild(ta);
-    ta.select();
-    try { document.execCommand("copy"); done(); } catch (e) { /* ignore */ }
-    document.body.removeChild(ta);
-  };
-
-  const openContact = () => {
-    const modal = buildContactModal();
-    applyLang(currentLang);
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeContact = () => {
-    if (!contactModal) return;
-    contactModal.classList.remove("open");
-    contactModal.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-  };
-
-  document.querySelectorAll("[data-contact-open]").forEach((btn) => {
-    btn.addEventListener("click", openContact);
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && contactModal && contactModal.classList.contains("open")) closeContact();
-  });
 
   /* ---------- 移动端导航 ---------- */
   const burger = document.querySelector(".nav-burger");
