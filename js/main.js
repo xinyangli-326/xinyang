@@ -9,9 +9,9 @@
   const I18N = window.I18N || {};
   try {
     localStorage.removeItem("site-lang");
-    sessionStorage.removeItem("site-lang");
   } catch (e) { /* ignore */ }
-  let currentLang = "zh";
+  const savedLang = sessionStorage.getItem("site-lang") || "zh";
+  let currentLang = savedLang === "en" ? "en" : "zh";
 
   const syncResume = (lang) => {
     const frame = document.querySelector(".pdf-frame iframe");
@@ -64,6 +64,7 @@
   document.querySelectorAll(".lang-switch button[data-lang]").forEach((btn) => {
     btn.addEventListener("click", () => {
       currentLang = btn.dataset.lang === "en" ? "en" : "zh";
+      sessionStorage.setItem("site-lang", currentLang);
       applyLang(currentLang);
     });
   });
