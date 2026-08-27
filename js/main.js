@@ -8,7 +8,7 @@
   /* ---------- 多语言切换（简体中文 / English） ---------- */
   const I18N = window.I18N || {};
   const urlLang = new URLSearchParams(location.search).get("lang");
-  const savedLang = urlLang || localStorage.getItem("site-lang") || "zh";
+  const savedLang = urlLang || "zh";
   let currentLang = savedLang === "en" ? "en" : "zh";
 
   const syncLinks = (lang) => {
