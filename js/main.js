@@ -7,8 +7,24 @@
 
   /* ---------- 多语言切换（简体中文 / English） ---------- */
   const I18N = window.I18N || {};
-  const savedLang = sessionStorage.getItem("site-lang") || "zh";
+  const urlLang = new URLSearchParams(location.search).get("lang");
+  const savedLang = urlLang || "zh";
   let currentLang = savedLang === "en" ? "en" : "zh";
+
+  const syncLinks = (lang) => {
+    document.querySelectorAll("a[href]").forEach((a) => {
+      const raw = a.getAttribute("href");
+      if (!raw || /^(https?:|mailto:|tel:|data:|javascript:)/.test(raw)) return;
+      const parts = raw.split("#");
+      const base = parts[0];
+      if (!base.endsWith(".html")) return;
+      const hash = parts.length > 1 ? "#" + parts.slice(1).join("#") : "";
+      const url = new URL(base, location.href);
+      if (lang === "en") url.searchParams.set("lang", "en");
+      else url.searchParams.delete("lang");
+      a.setAttribute("href", url.pathname.split("/").pop() + (url.search || "") + hash);
+    });
+  };
 
   const syncResume = (lang) => {
     const frame = document.querySelector(".pdf-frame iframe");
@@ -55,18 +71,48 @@
     });
 
     syncResume(lang);
+    syncLinks(lang);
     cleanLangParam();
   };
 
   document.querySelectorAll(".lang-switch button[data-lang]").forEach((btn) => {
     btn.addEventListener("click", () => {
       currentLang = btn.dataset.lang === "en" ? "en" : "zh";
-      sessionStorage.setItem("site-lang", currentLang);
       applyLang(currentLang);
     });
   });
 
   applyLang(currentLang);
+
+  /* ---------- 一键复制（联系信息，不弹外部窗口） ---------- */
+  document.querySelectorAll("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const text = btn.dataset.copy;
+      const done = () => {
+        const tip = document.getElementById("copyTip");
+        if (tip) {
+          tip.classList.add("show");
+          clearTimeout(tip._t);
+          tip._t = setTimeout(() => tip.classList.remove("show"), 1600);
+        }
+      };
+      const fallback = () => {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); done(); } catch (e) { /* ignore */ }
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fallback);
+      } else {
+        fallback();
+      }
+    });
+  });
 
   /* ---------- 移动端导航 ---------- */
   const burger = document.querySelector(".nav-burger");

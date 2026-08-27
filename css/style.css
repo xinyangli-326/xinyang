@@ -1043,6 +1043,26 @@ main { position: relative; z-index: 1; }
 }
 .contact-links a:hover { background: var(--card); color: var(--pink-deep); transform: translateY(-2px); }
 
+.copy-tip {
+  position: fixed;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%) translateY(8px);
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 800;
+  padding: 10px 20px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 300;
+  transition: all 0.25s ease;
+}
+
+.copy-tip.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
 .footer {
   text-align: center;
   padding: 40px 16px 34px;
