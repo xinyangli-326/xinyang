@@ -828,6 +828,13 @@ main { position: relative; z-index: 1; }
   font-weight: 800;
 }
 
+/* 海报案例卡片横跨整行 */
+.project-grid > .poster-card { grid-column: 1 / -1; }
+.project-grid > .poster-card .poster-grid { grid-template-columns: repeat(3, 1fr); }
+.project-grid > .poster-card .poster-thumb.poster-wide { grid-column: auto; }
+.project-grid > .poster-card .poster-thumb img,
+.project-grid > .poster-card .poster-thumb.poster-wide img { height: 330px; }
+
 /* ============ Lightbox 图片放大 ============ */
 .lightbox {
   position: fixed;
@@ -1126,6 +1133,9 @@ main { position: relative; z-index: 1; }
   .module-grid { grid-template-columns: repeat(2, 1fr); }
   .strength-grid { grid-template-columns: 1fr; }
   .project-grid, .hobby-grid { grid-template-columns: 1fr; }
+  .project-grid > .poster-card .poster-grid { grid-template-columns: 1fr; }
+  .project-grid > .poster-card .poster-thumb img,
+  .project-grid > .poster-card .poster-thumb.poster-wide img { height: 300px; }
   .role-row { grid-template-columns: 1fr; }
   .flow { grid-template-columns: repeat(2, 1fr); }
   .flow-step::after { display: none; }
